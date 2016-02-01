@@ -1,0 +1,5 @@
+[user]
+	name = jared.fox
+	email = jared.fox@company.com
+[credential]
+	helper = osxkeychain

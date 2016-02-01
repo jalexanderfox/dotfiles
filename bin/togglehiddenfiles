@@ -1,0 +1,11 @@
+#!/bin/bash
+# Toggle hidden files ( OSX - Yosimte+ )
+
+STATUS=`defaults read com.apple.finder AppleShowAllFiles`
+if [ $STATUS == true ]
+then
+	defaults write com.apple.finder AppleShowAllFiles -boolean false
+else
+	defaults write com.apple.finder AppleShowAllFiles -boolean true
+fi
+killall Finder

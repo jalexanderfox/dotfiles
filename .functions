@@ -1,0 +1,12 @@
+# OSX Terminal functions
+# http://thelucid.com/2012/01/04/naming-your-terminal-tabs-in-osx-lion/
+# rename tab
+# does not work in Yosemite
+function tabname {
+  printf "\e]1;$1\a"
+}
+
+# rename window
+function winname {
+  printf "\e]2;$1\a"
+}

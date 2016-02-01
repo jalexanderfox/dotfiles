@@ -1,0 +1,17 @@
+alias v="vim"
+alias o="open"
+alias oo="open ."
+
+if ls --color -d . >/dev/null 2>&1; then
+    GNU_LS=1
+	colorflag="--color"
+elif ls -G -d . >/dev/null 2>&1; then
+    BSD_LS=1
+	colorflag="-G"
+else
+    SOLARIS_LS=1
+    colorflag="--color=auto -AFC"
+fi
+
+# List all files colorized in long format, including dot files
+alias ll="ls -laF ${colorflag}"

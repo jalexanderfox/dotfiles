@@ -1,0 +1,213 @@
+###############################################################################
+# STATIC VARIABLES
+###############################################################################
+
+DOTFILES_DIR="$HOME/.dotfiles"
+
+###############################################################################
+# FRESH SETUP INSTRUCTIONS
+###############################################################################
+# for reference https://github.com/freshshell/fresh
+# 1) Clone your repo in ~/.dotfiles as this is the default location for freshshell
+# 2) Run this command:
+# 		$ bash ~/.dotfiles/initfresh
+# 	This will:
+#	Download and install Freshshell
+#	create a symlink
+# 	From '~/.freshrc'
+#	To "'~/.dotfiles/.freshrc'"
+#	AND it will run 'fresh'
+#	to setup your dotfiles based on the .freshrc
+#
+# Why symlink .freshrc?
+# '~/.dotfiles/.freshrc' is your git repo version,
+# the version used for building your fresh dotfiles is
+# '~/.freshrc'
+
+# handles updating fresh
+fresh freshshell/fresh bin/fresh --bin
+
+
+###############################################################################
+# BIN
+###############################################################################
+
+# chmodr (recursively chmod a directory for web access)
+fresh bin/chmodr --bin=~/bin/chmodr
+
+# Atom
+# because we want a single source of atom packages
+# alias to this git repo
+# use package-sync to sync packages
+ln -sf  ~/.dotfiles/.atom/packages.cson ~/.atom/packages.cson
+
+# PROFILE | PRIVATE | EXTRA
+
+# Links ~/.dotfiles/.bash_profile into ~/.bash_profile
+# fresh .bash_profile --file=~/.bash_profile
+fresh .bash_profile --file
+
+# Links ~/.dotfiles/.bashrc into ~/.bashrc
+# fresh .bashrc --file=~/.bashrc
+fresh .bashrc --file
+
+
+###############################################################################
+# ALIASES
+###############################################################################
+
+# =-------------- IMPORTANT ORDER ------------------=
+
+# Builds mathiasbynens/dotfiles/.aliases into ~/.fresh/build/shell.sh
+fresh mathiasbynens/dotfiles/ .aliases
+
+# Builds jasoncodes/dotfiles/shell/aliases into ~/.fresh/build/shell.sh
+fresh jasoncodes/dotfiles shell/aliases
+
+# override with local changes
+fresh .aliases
+
+
+###############################################################################
+# CURLRC
+###############################################################################
+
+fresh mathiasbynens/dotfiles .curlrc --file
+
+###############################################################################
+# EXPORTS
+###############################################################################
+
+fresh mathiasbynens/dotfiles .exports
+
+###############################################################################
+# FUNCTIONS
+###############################################################################
+
+fresh .functions
+fresh mathiasbynens/dotfiles .functions --file=~/.functions
+
+
+###############################################################################
+# INPUT
+###############################################################################
+
+# Builds mathiasbynens/dotfiles/.inputrc into ~/.inputrc
+fresh mathiasbynens/dotfiles .inputrc --file=~/.inputrc
+
+# Builds jasoncodes/dotfiles/config/inputrc into ~/.inputrc
+fresh jasoncodes/dotfiles config/inputrc --file=~/.inputrc
+
+###############################################################################
+# PROMPT
+###############################################################################
+
+# Builds cowboy/dotfiles/source/50_prompt.sh into ~/.fresh/build/shell.sh
+# fresh cowboy/dotfiles source/50_prompt.sh
+
+# Links ~/.dotfiles/.bash_prompt into ~/.bash_prompt
+
+###############################################################################
+# STATE
+ln -sfn  ~/.dotfiles/.bash ~/.bash
+mkdir -p $DOTFILES_DIR/.bash/state
+
+# setup user context based on the user executing the fresh command
+$DOTFILES_DIR/.bash/helpers/state_fresh-user.sh
+
+$DOTFILES_DIR/.bash/helpers/aliases.sh "$DOTFILES_DIR/.bash/contexts" "$DOTFILES_DIR/.bash/state/context.alias.sh"
+fresh .bash/state/context.alias.sh
+
+$DOTFILES_DIR/.bash/helpers/aliases.sh "$DOTFILES_DIR/.bash/contexts/actions" "$DOTFILES_DIR/.bash/state/action.alias.sh"
+fresh .bash/state/action.alias.sh
+
+# DOCKER
+ln -sfn ~/.dotfiles/docker ~/docker
+$DOTFILES_DIR/.bash/helpers/aliases.sh "${DOTFILES_DIR}/docker" "${DOTFILES_DIR}/.bash/state/docker.alias.sh"
+fresh .bash/state/docker.alias.sh
+fresh docker/functions/\*
+###############################################################################
+
+# Terminal Colors
+fresh .bash/colors.sh
+fresh .bash/environment.sh
+
+fresh .bash/helpers/git-prompt.sh
+fresh .bash/helpers/proxy-prompt.sh
+fresh .bash/helpers/user-at-host-prompt.sh
+fresh .bash/prompt.sh
+
+###############################################################################
+# PROXY
+###############################################################################
+fresh .bash/helpers/proxy_functions.sh
+~/.dotfiles/.bash/contexts/public.sh
+
+###############################################################################
+# NET
+###############################################################################
+
+# Builds cowboy/dotfiles/source/50_net.sh into ~/.fresh/build/shell.sh
+fresh cowboy/dotfiles source/50_net.sh
+
+
+###############################################################################
+# GIT
+###############################################################################
+
+# Create .gitconfig.local if it doesn't already exist
+touch ~/.gitconfig.local
+
+# Builds ~/.dotfiles/.git_____ into ~/.git_____
+fresh .gitconfig --file=~/.gitconfig
+fresh .gitignore --file=~/.gitignore
+
+# Builds cowboy/dotfiles/link/.gitignore_global into ~/.gitignore_global
+fresh cowboy/dotfiles link/.gitignore_global --file=~/.gitignore_global
+
+###############################################################################
+# RUBY
+###############################################################################
+
+fresh .gemrc --file
+
+###############################################################################
+# HISTORY
+###############################################################################
+
+# Builds cowboy/dotfiles/source/50_history.sh into ~/.fresh/build/shell.sh
+fresh cowboy/dotfiles source/50_history.sh
+
+###############################################################################
+# VIM
+###############################################################################
+
+#symlinks the entire ./.vim/ directory notice the trailing slash
+fresh mathiasbynens/dotfiles .vim --file=~/.vim/
+fresh mathiasbynens/dotfiles .vimrc --file=~/.vimrc
+
+###############################################################################
+# WGET
+###############################################################################
+
+fresh mathiasbynens/dotfiles .wgetrc --file=~/.wgetrc
+
+
+###############################################################################
+# EXTRA
+###############################################################################
+# =-------------- IMPORTANT ------------------=
+# THIS FILE IS NOT TO BE CHECKED IN
+# Links ~/.dotfiles/.extra into ~/.extra
+# fresh .extra --file=~/.extra
+touch ~/.extra
+
+
+###############################################################################
+# PRIVATE
+###############################################################################
+# =-------------- IMPORTANT ------------------=
+# THIS FILE IS NOT TO BE CHECKED IN
+# Links ~/.dotfiles/.private into ~/.private
+# fresh .private --file=~/.private
+touch ~/.private

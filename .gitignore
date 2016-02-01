@@ -1,0 +1,27 @@
+# Compiled Python files
+*.pyc
+
+# Folder view configuration files
+.DS_Store
+Desktop.ini
+
+# Thumbnail cache files
+._*
+Thumbs.db
+
+# Files that might appear on external disks
+.Spotlight-V100
+.Trashes
+
+caches/
+backups/
+link/.ssh/authorized_keys
+link/.ssh/id_*
+link/.ssh/known_hosts
+.extra
+.private
+lib/
+.solarized
+.fresh
+docker.alias.sh
+.bash/state
