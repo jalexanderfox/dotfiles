@@ -21,11 +21,18 @@ cat $file; echo ""
 
 new_ip="$(docker-machine ip $active)"
 
-hosts=$(<$SCRIPTS_DIR/conf/OSXHosts)
+# Read from file
+# hosts=$(<$SCRIPTS_DIR/conf/OSXHosts)
+# map="${new_ip}\t $hosts"
+
+# Read from config
+source $SCRIPTS_DIR/conf/docker.private.conf
+hosts=$DOTFILES_OSX_HOSTS
+
 map="${new_ip}\t $hosts"
 
 echo "=====[$active] Removing old hosts map====="; echo ""
-sudo sed -i.bak "/www-local\.kroger\.com/d" $file
+sudo sed -i.bak "/DONOTREMOVE/d" $file
 
 echo "=====[$active] Adding new hosts map====="; echo ""
 echo "=====[$active] New Proxy Host [${new_ip}]====="; echo ""

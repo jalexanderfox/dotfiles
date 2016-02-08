@@ -23,5 +23,6 @@ link/.ssh/known_hosts
 lib/
 .solarized
 .fresh
+docker.private.conf
 docker.alias.sh
 .bash/state

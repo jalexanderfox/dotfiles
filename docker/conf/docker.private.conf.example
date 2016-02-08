@@ -1,0 +1,10 @@
+# DONOTREMOVE is used by the scripts as a search string for deleting/updating
+# so do not remove the DONOTREMOVE strings below,
+# just append your hosts comma separated.
+
+# NOTE: Docker QuickTerminal Start Script:
+# /Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts
+
+DOTFILES_DOCKER_PRIVATE_REGISTRY='docker.company.com'
+DOTFILES_DOCKER_NO_PROXY='DONOTREMOVE,site, www-local.company.com, docker.company.com, localhost, 127.0.0.1, 192.168.99.100, 192.168.99.101, 192.168.99.102, 192.168.99.103, 192.168.99.104, 192.168.99.105, 192.168.99.106, 192.168.99.107, 192.168.99.108, 192.168.99.109, 192.168.99.110'
+DOTFILES_OSX_HOSTS='DONOTREMOVE,www-local.company.com'

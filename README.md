@@ -129,7 +129,13 @@ If you find that your .extra file is getting large, you may want to [fork this r
 Don't know? Read about [Docker](https://www.docker.com/).
 In this repository, there lives a "docker" directory containing docker related scripts. It's worth a look through if you are on a corporate network that requires a proxy.
 
-NOTE: all add scripts remove the old before adding.
+NOTE: all set scripts unset the old before setting.
+
+NOTE: some scripts require configuration (for setNoProxy and setOSXHosts in particular). Variables are located in:
+```bash
+docker/conf/docker.private.conf
+```
+This file is generated after running fresh or you can create it yourself.
 
 All of these scripts are aliased and added to the bash_profile in the format:
 ```bash

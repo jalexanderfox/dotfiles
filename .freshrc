@@ -123,6 +123,7 @@ fresh .bash/state/action.alias.sh
 
 # DOCKER
 ln -sfn ~/.dotfiles/docker ~/docker
+cp -n ~/docker/conf/docker.private.conf.example ~/docker/conf/docker.private.conf
 $DOTFILES_DIR/.bash/helpers/aliases.sh "${DOTFILES_DIR}/docker" "${DOTFILES_DIR}/.bash/state/docker.alias.sh"
 fresh .bash/state/docker.alias.sh
 fresh docker/functions/\*

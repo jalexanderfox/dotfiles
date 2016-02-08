@@ -20,7 +20,13 @@ fi
 echo "=====[$active] Removing old no_proxy export from docker machine profile====="; echo ""
 docker-machine ssh $active "sudo sed -i.bak \"/no_proxy/d\" $profile"
 
-no_proxy="$(<$SCRIPTS_DIR/conf/noProxy)"
+# Read from file
+# no_proxy="$(<$SCRIPTS_DIR/conf/noProxy)"
+
+# Use config
+source $SCRIPTS_DIR/conf/docker.private.conf
+no_proxy=$DOTFILES_DOCKER_NO_PROXY
+
 echo "=====[$active] no_proxy Hosts [${no_proxy}]====="; echo ""
 
 echo "=====[$active] Adding new no_proxy export to docker machine profile====="; echo ""
