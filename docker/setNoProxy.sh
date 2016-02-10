@@ -6,7 +6,7 @@ me=$(basename "$0")
 active=$1
 file=$2
 
-echo "=====Executing[${me}]====="; echo ""
+echo "=====Executing[$me]====="; echo ""
 if [ -z "$active" ]; then
   active=$(docker-machine active)
   echo "=====[$active] Docker Machine Name====="; echo ""

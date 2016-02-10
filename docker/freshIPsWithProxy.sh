@@ -2,16 +2,18 @@
 set -e
 
 SCRIPTS_DIR="$(dirname "$(readlink -f "$0")")"
+source "$SCRIPTS_DIR/conf/common.sh"
+
 active=$1
 profile=$2
 if [ -z "$active" ]; then
   active=$(docker-machine active)
-  echo "=====[$active] Docker Machine Name====="; echo ""
+  _info_ "[$active] Docker Machine Name"; echo ""
 fi
 
 if [ -z "$profile" ]; then
   profile="/var/lib/boot2docker/profile"
-  echo "=====[$active] [${profile}]====="; echo ""
+  _info_ "[$active] [${profile}]"; echo ""
 fi
 
 ${SCRIPTS_DIR}/setNoProxy.sh $active $profile

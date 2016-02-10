@@ -1,7 +1,7 @@
 #! /bin/bash
 
-DIR="$(dirname "$(readlink -f "$0")")"
-SCRIPTS_DIR="$DIR"
+SCRIPTS_DIR="$(dirname "$(readlink -f "$0")")"
+source "$SCRIPTS_DIR/conf/common.sh"
 
 NO_SLASHES() {
     echo ${1##*/}
@@ -12,16 +12,16 @@ NO_DOTS() {
 }
 
 ALIAS_MODIFIER=$(NO_SLASHES $SCRIPTS_DIR)
-cd $DIR
+cd $SCRIPTS_DIR
 
 #clear out the ALIAS_FILE
-echo '=====[aliases]====='
+_info_ 'aliases'
 for f in $SCRIPTS_DIR/*.sh; do
     [[ -e $f ]] || continue
     file=$(NO_DOTS $(NO_SLASHES $f))
     aliasName="${ALIAS_MODIFIER}_${file}"
     aliasCommand="${aliasName}"
-    echo $aliasCommand
+    _log $aliasCommand
 done
-echo "=====[scripts location]====="
-echo "$SCRIPTS_DIR"
+_info_ 'scripts location'
+_special "$SCRIPTS_DIR"
