@@ -6,9 +6,9 @@ export GREEN='\033[0;32m'     #info
 export BLUE='\033[36m'        #log
 export INDIGO='\033[0;34m'    #debug
 export VIOLET='\033[35m'      #special
-
 export NC='\033[0m'
 
+COLS=$( tput cols )
 
 function color() {
   echo -e "${!2}$1${NC}"
@@ -19,12 +19,16 @@ function red() {
   color "$1" RED
 }
 
-function _bookend_() {
-  b='______'
-  _d="$b|"
-  b_="|$b"
+function repl() { printf "$1"'%.s' $(eval "echo {1.."$(($2))"}"); }
 
-  echo "$_d$1$b_"
+function _bookend_() {
+  _d="[ "
+  b_=" ]"
+  message="$_d$1$b_"
+  message_chars=${#message}
+  diff=$(($COLS-$message_chars))
+
+  echo $message$(repl '–' $diff)
 }
 
 function _error() {

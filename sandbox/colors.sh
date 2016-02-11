@@ -5,20 +5,20 @@ SCRIPTS_DIR="$DIR"
 
 source "$SCRIPTS_DIR/../docker/conf/common.sh"
 
-_error "error message"
-_error_ "error with bookends"
+_error "Error Message"
+_error_ "Error with Bookends"; echo
 
-_warn "warn message"; _warn
-_warn_ "warn with bookends"
+_warn "Warn Message";
+_warn_ "Warn with Bookends"; echo
 
-_info "info message"
-_info_ "info with bookends"
+_info "Info Message"
+_info_ "Info with Bookends"; echo
 
-_debug "debug message"
-_debug_ "debug with bookends"
+_debug "Debug Message"
+_debug_ "Debug with Bookends"; echo
 
-_log "log message"
-_log_ "log with bookends"
+_log "Log Message"
+_log_ "Log with Bookends"; echo
 
-_special "special"
-_special_ "special with bookends"
+_special "Special Message"
+_special_ "Special with Bookends"; echo
