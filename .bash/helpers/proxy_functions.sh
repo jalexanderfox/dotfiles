@@ -5,7 +5,7 @@ function proxy() {
 }
 
 function _proxy_assign(){
-  HTTP_PROXY_ENV="http_proxy ftp_proxy all_proxy HTTP_PROXY FTP_PROXY ALL_PROXY"
+  HTTP_PROXY_ENV="http_proxy ftp_proxy all_proxy HTTP_PROXY FTP_PROXY ALL_PROXY typings_proxy"
   HTTPS_PROXY_ENV="https_proxy HTTPS_PROXY"
   for envar in $HTTP_PROXY_ENV
   do
