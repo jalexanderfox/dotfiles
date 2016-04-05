@@ -233,6 +233,9 @@ In addition to these scripts, following functions are available (only if you hav
 docker_setEnv [environment_name]
 ```
 
+## Known issues:
+* the setup_fresh.sh requires the gnu version of readlink and even if setup_brew.sh is run before setup_fresh.sh, it currently fails on mac because the $PATH does not yet have coreutils (with gnu readlink). The bash_profile can be sourced in the .freshrc as a temporary fix.
+
 ## Feedback
 Suggestions/improvements
 [welcome](https://github.com/jalexanderfox/dotfiles/issues)!
