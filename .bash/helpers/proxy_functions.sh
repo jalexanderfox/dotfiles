@@ -57,6 +57,7 @@ function _proxy_init(){
   npm config set https-proxy $http_proxy_value
 
   apm config set proxy $http_proxy_value
+  apm config set http-proxy $http_proxy_value
   apm config set https-proxy $http_proxy_value
 
   _proxy_assign $http_proxy_value $https_proxy_value $no_proxy_value
