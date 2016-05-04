@@ -56,40 +56,40 @@ Now that you have the repo, it's time to setup and install the parts that you wa
 #### Suggested Install & Setup
 Installs Homebrew(brew), Dotfiles(fresh) and Homebrew Casks (cask)
 ```bash
-~/.dotfiles/setup.sh brew fresh cask
+cd ~/.dotfiles && ./setup.sh brew fresh cask
 ```
 
 #### Homebrew (brew) Install & Setup
 ```bash
-~/.dotfiles/setup.sh brew
+cd ~/.dotfiles && ./setup.sh brew
 ```
 
 #### Dotfiles (fresh) Install & Setup
 ```bash
-~/.dotfiles/setup.sh fresh
+cd ~/.dotfiles && ./setup.sh fresh
 ```
 
 #### Terminal Colors
 ```bash
-~/.dotfiles/setup.sh terminal
+cd ~/.dotfiles && ./setup.sh terminal
 ```
 
 #### Brew Casks (native apps) Install & Setup
 ```bash
-~/.dotfiles/setup.sh cask
+cd ~/.dotfiles && ./setup.sh cask
 ```
 
 #### Sensible OS X defaults (use caution)
 When setting up a new Mac, you may want to set some sensible OS X defaults. Use caution when executing this script, it's important to review it first:
 ```bash
-~/.dotfiles/setup.sh osx
+cd ~/.dotfiles && ./setup.sh osx
 ```
 
 ### Full Install & Setup
 This script will execute all of the [Individual Install Scripts](#user-content-individual-install-scripts) in the order in which they appear.
 
 ```bash
-~/.dotfiles/setup_all.sh
+cd ~/.dotfiles && ./setup_all.sh
 ```
 
 ### Extra commands and Private configurations
