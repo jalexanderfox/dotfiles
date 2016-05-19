@@ -36,6 +36,7 @@ packages: [
   "pigments"
   "polymer-atom"
   "project-manager"
+  "react"
   "remote-edit"
   "split-diff"
   "todo-show"
