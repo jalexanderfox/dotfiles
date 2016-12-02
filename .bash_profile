@@ -20,6 +20,10 @@ PATH="/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin/:$PATH"
 export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
 export SVN_EDITOR=vim
 
+#GoLang path
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
 # this is handled by freshshell
 # Add `~/bin` to the `$PATH`
 # export PATH="$HOME/bin:$PATH"
@@ -31,7 +35,6 @@ source ~/.fresh/build/shell.sh
 
 ###############################################################################
 source ~/.bash/state/.proxy
-source ~/.bash/state/.docker-env
 
 
 # Load the shell dotfiles, and then some:

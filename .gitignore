@@ -20,7 +20,6 @@ link/.ssh/id_*
 link/.ssh/known_hosts
 .extra
 .private
-lib/
 .solarized
 .fresh
 docker.private.conf
