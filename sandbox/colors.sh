@@ -3,7 +3,7 @@
 DIR="$(dirname "$(readlink -f "$0")")"
 SCRIPTS_DIR="$DIR"
 
-source "$SCRIPTS_DIR/../docker/conf/common.sh"
+source "$SCRIPTS_DIR/common.sh"
 
 _error "Error Message"
 _error_ "Error with Bookends"; echo

@@ -20,7 +20,7 @@ ALIAS_MODIFIER=$(NO_DOTS $(NO_SLASHES $2))
 cd $DIR
 
 #clear out the ALIAS_FILE
-echo '#Docker aliases generated from aliases.sh' > $ALIAS_FILE
+echo '#aliases generated from aliases.sh' > $ALIAS_FILE
 for f in $SCRIPTS_DIR/*.sh; do
     [[ -e $f ]] || continue
     file=$(NO_DOTS $(NO_SLASHES $f))

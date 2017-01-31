@@ -1,8 +1,0 @@
-DIR="$(dirname "$(readlink -f "$0")")"
-SCRIPTS_DIR="$DIR"
-source "$SCRIPTS_DIR/conf/common.sh"
-
-_info "DOCKER_TLS_VERIFY=$DOCKER_TLS_VERIFY"
-_info "DOCKER_HOST=$DOCKER_HOST"
-_info "DOCKER_CERT_PATH=$DOCKER_CERT_PATH"
-_info "DOCKER_MACHINE_NAME=$DOCKER_MACHINE_NAME"

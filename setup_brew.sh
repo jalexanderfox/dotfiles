@@ -100,6 +100,8 @@ binaries=(
   hub
   git
   n
+  httpie
+  stormssh
 )
 
 echo "installing binaries..."

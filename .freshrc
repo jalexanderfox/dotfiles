@@ -127,19 +127,6 @@ mkdir -p $DOTFILES_DIR/.bash/state
 
 # setup user context based on the user executing the fresh command
 $DOTFILES_DIR/.bash/helpers/state_fresh-user.sh
-
-$DOTFILES_DIR/.bash/helpers/aliases.sh "$DOTFILES_DIR/.bash/contexts" "$DOTFILES_DIR/.bash/state/context.alias.sh"
-fresh .bash/state/context.alias.sh
-
-$DOTFILES_DIR/.bash/helpers/aliases.sh "$DOTFILES_DIR/.bash/contexts/actions" "$DOTFILES_DIR/.bash/state/action.alias.sh"
-fresh .bash/state/action.alias.sh
-
-# DOCKER
-ln -sfn ~/.dotfiles/docker ~/docker
-cp -n ~/docker/conf/docker.private.conf.example ~/docker/conf/docker.private.conf
-$DOTFILES_DIR/.bash/helpers/aliases.sh "${DOTFILES_DIR}/docker" "${DOTFILES_DIR}/.bash/state/docker.alias.sh"
-fresh .bash/state/docker.alias.sh
-fresh docker/functions/\*
 ###############################################################################
 
 # Terminal Colors
@@ -155,7 +142,6 @@ fresh .bash/prompt.sh
 # PROXY
 ###############################################################################
 fresh .bash/helpers/proxy_functions.sh
-~/.dotfiles/.bash/contexts/public.sh
 
 ###############################################################################
 # NET

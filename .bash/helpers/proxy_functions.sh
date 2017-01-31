@@ -101,9 +101,9 @@ function proxy_status(){
  status="inactive"
  currentProxyCmd="$(cat ~/.bash/state/.proxy | grep proxy)"
  if [ -n "$HTTP_PROXY" ] ||
-     [ "$currentProxyCmd" = "proxyStart" ]; then
+     [ "$currentProxyCmd" = "proxy_start" ]; then
    if [ "$HTTP_PROXY" = "" ] ||
-       [ "$currentProxyCmd" = "proxyStop" ]; then
+       [ "$currentProxyCmd" = "proxy_stop" ]; then
         status="dirty"
    else
      status="active"

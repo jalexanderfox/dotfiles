@@ -1,5 +1,5 @@
 
-function docker_setEnv {
+function func_setEnv {
   export EXPORT_TEST=$1
   eval "$(./export3.sh)"
 }

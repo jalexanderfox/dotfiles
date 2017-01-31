@@ -40,7 +40,6 @@ brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch 
 apps=(
   atom
   controlplane
-  dockertoolbox
   firefox
   flash
   google-chrome
