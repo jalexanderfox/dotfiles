@@ -3,6 +3,8 @@
 export PROXY_STATE_PATH="$HOME/.bash/state/"
 
 function proxy() {
+  __proxy_check_init $*
+
   action=${1-"options"}
   shift
   proxy_${action} $*
@@ -18,11 +20,26 @@ function proxy_options(){
   echo "       status : show the status of the environment and proxy settings"
   echo "       vpn : sets proxy settings for junos pulse, pulse.pac"
   echo ""
-  echo "This terminal environment the proxy status is :"
+  echo "This terminal environment the proxy status is:"
   proxy_status
 }
 
-proxy_init() {
+function __proxy_check_init() {
+  if [[ $(__proxy_state_get_cache init) == "" ]]
+  then
+    if [[ "$1" == "" ]]
+    then
+      _info "Hint: you may want to run 'proxy init' first"
+    else
+      oops "You may want to run 'proxy init' first"
+    fi
+  fi
+}
+
+function proxy_init() {
+  #make sure we have stormssh installed
+  brew install stormssh
+
   local company host port user pass use_host
   company=$(proxy_state_confirm_company)
 
@@ -43,6 +60,8 @@ proxy_init() {
 
   proxy_run $company $host $port $user $pass
   proxy_vpn -d $company -p $host
+
+  __proxy_state_set_cache init true
 }
 
 function __proxy_assign(){
@@ -380,7 +399,6 @@ proxy_ssh_start() {
   fi
 
   local host ssh_host ssh_options
-  brew install stormssh
   host=$1
   ssh_host="github.com"
   ssh_options="\"${ssh_host}\" ssh.github.com:443 --o \"proxycommand=corkscrew ${host} 3128 %h %p\""
@@ -402,14 +420,14 @@ proxy_ssh_start() {
   return
 }
 
-proxy_ssh_stop() {
+function proxy_ssh_stop() {
   local ssh_host
   ssh_host="github.com"
   _info "Removing SSH Host $ssh_host"
   storm delete "$ssh_host"
 }
 
-__proxy_ssh_host_exists () {
+function __proxy_ssh_host_exists () {
   local ssh_host_found ssh_host_not_found
   ssh_host_found=`storm search "$1"`
   ssh_host_not_found="no results found."
