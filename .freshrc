@@ -99,6 +99,9 @@ fresh mathiasbynens/dotfiles .exports
 
 fresh .functions
 fresh mathiasbynens/dotfiles .functions --file=~/.functions
+fresh .bash/helpers/color.sh
+fresh .bash/helpers/oops.sh
+fresh .bash/helpers/most.sh
 
 
 ###############################################################################
@@ -202,6 +205,12 @@ fresh mathiasbynens/dotfiles .wgetrc --file=~/.wgetrc
 # fresh .extra --file=~/.extra
 touch ~/.extra
 
+
+###############################################################################
+# UTILITIES
+###############################################################################
+fresh defunkt/repl bin/repl --bin
+fresh pengwynn/dotfiles bin/termcolors --bin
 
 ###############################################################################
 # PRIVATE
