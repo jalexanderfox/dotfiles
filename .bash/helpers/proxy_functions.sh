@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#TODO: try using jq for json state management
+
 export PROXY_STATE_PATH="$HOME/.bash/state/"
 
 function proxy() {
@@ -64,24 +66,6 @@ function proxy_init() {
   __proxy_state_set_cache init true
 }
 
-function __proxy_assign(){
-  HTTP_PROXY_ENV="http_proxy ftp_proxy all_proxy HTTP_PROXY FTP_PROXY ALL_PROXY typings_proxy"
-  HTTPS_PROXY_ENV="https_proxy HTTPS_PROXY"
-  NO_PROXY_ENV="no_proxy NO_PROXY"
-  for envar in $HTTP_PROXY_ENV
-  do
-    export $envar=$1
-  done
-  for envar in $HTTPS_PROXY_ENV
-  do
-    export $envar=$2
-  done
-  for envar in $NO_PROXY_ENV
-  do
-     export $envar=$3
-  done
-}
-
 function __proxy_make_state_dir(){
   mkdir -p "$PROXY_STATE_PATH"
 }
@@ -94,7 +78,7 @@ EOF
 }
 
 function proxy_stop(){
-  __proxy_assign ""
+  proxy_assign ""
   __proxy_state_set "proxy_stop"
   npm config set strict-ssl true
   apm config set strict-ssl true
@@ -109,14 +93,15 @@ function proxy_stop(){
   apm config rm https-proxy
 
   proxy_ssh_stop
+  __proxy_state_set_cache state stop
 }
 
 function proxy_run(){
   local company=$1
   __proxy_make_state_dir
-  __proxy_state_set 'proxy_run' "$@"
   __proxy_state_set_cache company "$company"
   __proxy_state_set_cache host "$2"
+  __proxy_state_set_cache state run
 
   if [ -z "${4+x}" ] && [ -z "${5+x}" ]; then
     http_proxy_value="http://$2:$3"
@@ -142,9 +127,28 @@ function proxy_run(){
   apm config set http-proxy $http_proxy_value
   apm config set https-proxy $http_proxy_value
 
-  __proxy_assign $http_proxy_value $https_proxy_value $no_proxy_value
-
+  proxy_assign $http_proxy_value $https_proxy_value $no_proxy_value
   proxy_ssh_start $2
+}
+
+function proxy_assign(){
+  HTTP_PROXY_ENV="http_proxy ftp_proxy all_proxy HTTP_PROXY FTP_PROXY ALL_PROXY typings_proxy"
+  HTTPS_PROXY_ENV="https_proxy HTTPS_PROXY"
+  NO_PROXY_ENV="no_proxy NO_PROXY"
+  for envar in $HTTP_PROXY_ENV
+  do
+    export $envar=$1
+  done
+  for envar in $HTTPS_PROXY_ENV
+  do
+    export $envar=$2
+  done
+  for envar in $NO_PROXY_ENV
+  do
+     export $envar=$3
+  done
+
+  __proxy_state_set 'proxy_assign' $http_proxy_value $https_proxy_value $no_proxy_value
 }
 
 function __proxy_state_set_cache(){
@@ -282,13 +286,12 @@ function proxy_settings(){
 
 function proxy_status(){
  status="inactive"
- currentProxyCmd=$(cat "${PROXY_STATE_PATH}.proxy" | grep proxy)
- currentProxyCmd=$(_trim $currentProxyCmd)
- if [[ -n "$HTTP_PROXY" ]] || [[ "$currentProxyCmd" = "proxy_run" ]]
+ proxy_state=$(__proxy_state_get_cache state)
+ if [[ -n "$HTTP_PROXY" ]] || [[ "$proxy_state" = "start" ]]
  then
-   if [[ "$HTTP_PROXY" = "" ]] || [[ "$currentProxyCmd" = "proxy_stop" ]]
+   if [[ "$HTTP_PROXY" = "" ]] || [[ "$proxy_state" = "stop" ]]
    then
-        status="dirty"
+     status="dirty"
    else
      status="active"
    fi
@@ -390,7 +393,6 @@ EOF
   sudo chflags uchg $PULSE_PAC
 }
 
-#TODO more logic, make sure $host is passed in
 proxy_ssh_start() {
   if [[ -z $1 ]]
   then
@@ -450,4 +452,5 @@ function __my_ip() {
   else
     my_ip=$(ifconfig eth0|grep inet|head -1|sed 's/\:/ /'|awk '{print $3}')
   fi
+  echo $my_ip
 }
