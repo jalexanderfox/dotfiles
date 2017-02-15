@@ -148,7 +148,7 @@ function proxy_assign(){
      export $envar=$3
   done
 
-  __proxy_state_set 'proxy_assign' $http_proxy_value $https_proxy_value $no_proxy_value
+  __proxy_state_set 'proxy_assign' $1 $2 $3
 }
 
 function __proxy_state_set_cache(){
