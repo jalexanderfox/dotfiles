@@ -287,7 +287,7 @@ function proxy_settings(){
 function proxy_status(){
  status="inactive"
  proxy_state=$(__proxy_state_get_cache state)
- if [[ -n "$HTTP_PROXY" ]] || [[ "$proxy_state" = "start" ]]
+ if [[ -n "$HTTP_PROXY" ]] || [[ "$proxy_state" = "run" ]]
  then
    if [[ "$HTTP_PROXY" = "" ]] || [[ "$proxy_state" = "stop" ]]
    then
