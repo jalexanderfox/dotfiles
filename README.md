@@ -42,7 +42,7 @@ Now you need to decide whether you want to [Full Install & Setup](#user-content-
 * [Dotfiles (fresh)](#user-content-dotfiles-fresh-install--setup)
 * [Caskroom (brew cask) formulae](#user-content-brew-casks-native-apps--install--setup)
 * [terminal colors](#user-content-terminal-colors)
-* [Sensible OS X defaults](#user-content-sensible-os-x-defaults).
+<!-- * [Sensible OS X defaults](#user-content-sensible-os-x-defaults). -->
 
 
 ### Use Caution
@@ -77,11 +77,16 @@ cd ~/.dotfiles && ./setup.sh terminal
 cd ~/.dotfiles && ./setup.sh cask
 ```
 
+<!--
+# DEPRECATED
+# use something like this:
+# https://github.com/mathiasbynens/dotfiles/blob/master/.macos
+
 #### Sensible OS X defaults (use caution)
 When setting up a new Mac, you may want to set some sensible OS X defaults. Use caution when executing this script, it's important to review it first:
 ```bash
 cd ~/.dotfiles && ./setup.sh osx
-```
+``` -->
 
 ### Full Install & Setup
 This script will execute all of the [Individual Install Scripts](#user-content-individual-install-scripts) in the order in which they appear.
