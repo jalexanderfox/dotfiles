@@ -25,7 +25,7 @@ function most() (
 
   __MOST_SHOW_USAGE () {
     _info_ "Usage:"
-    _info_ "most [-hdks] [-a alias] [-c clean] [-f host file] [-i ip(required)] [-n host name(required)] [-u user]"
+    _info "most [-hdks] [-a alias] [-c clean] [-f host file] [-i ip(required)] [-n host name(required)] [-u user]"
     _info "   -a | alias -- ssh host alias"
     _info "   -c | clean/remove host map"
     _info "   -d | dry run"
