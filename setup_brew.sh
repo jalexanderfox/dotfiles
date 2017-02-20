@@ -86,22 +86,24 @@ brew install woff2
 # List of binaries to install
 # sshfs
 binaries=(
-  iproute2mac
-  graphicsmagick
-  webkit2png
-  rename
-  zopfli
-  ffmpeg
-  python
-  trash
-  node
-  tree
   ack
-  hub
-  git
-  n
+  ffmpeg
+  graphicsmagick
   httpie
+  hub
+  iproute2mac
+  jq
+  git
+  git-lfs
+  n
+  node
+  python
+  rename
   stormssh
+  trash
+  tree
+  webkit2png
+  zopfli
 )
 
 echo "installing binaries..."
@@ -111,21 +113,15 @@ brew install ${binaries[@]}
 # brew install ack # installed above
 # brew install dark-mode
 #brew install exiv2
-brew install git
-brew install git-lfs
 brew install imagemagick --with-webp
 # brew install lua
 brew install lynx
 brew install p7zip
 brew install pigz
 brew install pv
-brew install rename
-brew install rhino
+# brew install rhino
 brew install speedtest_cli
 brew install ssh-copy-id
-brew install tree
-brew install webkit2png
-brew install zopfli
 # Install Z
 # dont forget this in your .bash_profile
 # . `brew --prefix`/etc/profile.d/z.sh

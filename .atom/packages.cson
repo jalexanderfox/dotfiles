@@ -8,6 +8,7 @@ packages: [
   "atomic-chrome"
   "auto-detect-indentation"
   "autoprefixer"
+  "change-case"
   "color-picker"
   "css-comb"
   "docblockr"
