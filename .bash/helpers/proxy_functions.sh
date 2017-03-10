@@ -79,7 +79,7 @@ EOF
 
 function proxy_stop(){
   proxy_assign ""
-  __proxy_state_set "proxy_stop"
+  __proxy_state_set ""
   npm config set strict-ssl true
   apm config set strict-ssl true
 

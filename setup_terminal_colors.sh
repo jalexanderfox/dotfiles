@@ -8,7 +8,6 @@ mkdir -p ~/.dotfiles/lib
 cd ~/.dotfiles/lib
 git clone https://github.com/altercation/solarized.git
 cd ~/.dotfiles
-echo 'dont forget to set a solarized theme as your default'
 
 ###############################################################################
 # TERMINAL
@@ -17,6 +16,11 @@ echo 'dont forget to set a solarized theme as your default'
 # adds themes to terminal
 open ~/.dotfiles/lib/solarized/osx-terminal.app-colors-solarized/'Solarized Light ansi.terminal'
 open ~/.dotfiles/lib/solarized/osx-terminal.app-colors-solarized/'Solarized Dark ansi.terminal'
+
+# set Terminal default theme to "Solarized Dark ansi"
+COLOR_THEME="Solarized Dark ansi"
+defaults write com.apple.Terminal "Default Window Settings" -string $COLOR_THEME
+defaults write com.apple.Terminal "Startup Window Settings" -string $COLOR_THEME
 
 ###############################################################################
 # ITERM2
@@ -60,3 +64,6 @@ open ~/.dotfiles/lib/solarized/iterm2-colors-solarized/'Solarized Dark.itermcolo
 # set t_Co=256
 # set background=dark
 # colorscheme default " >> ~/.vimrc.after
+
+# Restart the terminal
+open ./restart-terminal.app

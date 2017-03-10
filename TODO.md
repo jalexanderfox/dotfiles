@@ -1,5 +1,28 @@
 # TODO:
 
+## Test install_all.sh in vagrant
+
+## Test terminal colors install
+<!--
+# set terminal colors
+  # "Default Window Settings" = "Solarized Dark ansi";
+  # "Startup Window Settings" = "Solarized Dark ansi";
+# read
+defaults read com.apple.Terminal "Default Window Settings"
+defaults read com.apple.Terminal "Startup Window Settings"
+
+# write
+defaults write com.apple.Terminal "Default Window Settings" -string "Solarized Dark ansi"
+defaults write com.apple.Terminal "Startup Window Settings" -string "Solarized Dark ansi"
+
+# restart terminal
+open ./restart-terminal.app
+ -->
+## netloc to change network location (Office/Public)
+
+Set Public npm registry to: https://registry.npmjs.org/
+Set Office npm registry to: http://npm.kroger.com/
+
 ## Add change network location on proxy init if location is not set
 
 <!--
