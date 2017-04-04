@@ -16,7 +16,7 @@ export LANG="en_US"
 export LC_CTYPE="en_US.UTF-8"
 
 #setup mac to use /usr/local/
-PATH="./node_modules/.bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin/:$PATH"
+PATH="./node_modules/.bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH"
 export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
 export SVN_EDITOR=vim
 
