@@ -39,7 +39,6 @@ brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch 
 # Apps
 apps=(
   atom
-  controlplane
   firefox
   flash
   google-chrome
@@ -47,22 +46,22 @@ apps=(
   iterm2
   java
   optimal-layout
-  phantomjs
-  squidman
 )
 
 # Install apps to /Applications
 # Default is: /Users/$user/Applications
 echo "installing apps..."
 brew cask install --appdir="/Applications" ${apps[@]}
-cleanup brew cask and bin files
+# cleanup brew cask and bin files
 
 # Archive... for use if you want
 # Apps
 # apps=(
+#   phantomjs
 #   alfred
 #   dropbox
 #   google-chrome
+#   controlplane
 #   qlcolorcode
 #   screenflick
 #   slack
@@ -73,6 +72,7 @@ cleanup brew cask and bin files
 #   qlmarkdown
 #   seil
 #   spotify
+#   squidman
 #   vagrant
 #   arq
 #   flash

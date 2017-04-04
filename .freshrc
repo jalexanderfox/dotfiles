@@ -52,7 +52,9 @@ fresh bin/chmodr --bin=~/bin/chmodr
 # because we want a single source of atom packages
 # alias to this git repo
 # use package-sync to sync packages
-ln -sf  ~/.dotfiles/.atom/packages.cson ~/.atom/packages.cson
+
+mkdir -p $HOME/.atom
+ln -sf  $HOME/.dotfiles/.atom/packages.cson $HOME/.atom/packages.cson
 
 # PROFILE | PRIVATE | EXTRA
 

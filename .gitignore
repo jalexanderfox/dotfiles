@@ -15,6 +15,7 @@ Thumbs.db
 
 caches/
 backups/
+lib/
 link/.ssh/authorized_keys
 link/.ssh/id_*
 link/.ssh/known_hosts
