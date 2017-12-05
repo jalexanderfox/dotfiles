@@ -105,10 +105,10 @@ function proxy_run(){
 
   if [ -z "${4+x}" ] && [ -z "${5+x}" ]; then
     http_proxy_value="http://$2:$3"
-    https_proxy_value="https://$2:$3"
+    https_proxy_value="http://$2:$3"
   else
     http_proxy_value="http://$4:$5@$2:$3"
-    https_proxy_value="https://$4:$5@$2:$3"
+    https_proxy_value="http://$4:$5@$2:$3"
   fi
 
   # no_proxy_value="localhost,127.0.0.1,192.168/16,169.254/16,10.*,www-local.*,*.local"

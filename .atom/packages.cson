@@ -30,6 +30,7 @@ packages: [
   "linter-eslint"
   "linter-htmlhint"
   "linter-js-standard"
+  "linter-markdown"
   "linter-ui-default"
   "merge-conflicts"
   "minimap"
