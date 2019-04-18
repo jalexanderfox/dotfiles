@@ -81,16 +81,12 @@ function proxy_stop(){
   proxy_assign ""
   __proxy_state_set ""
   npm config set strict-ssl true
-  apm config set strict-ssl true
 
   git config --global --unset http.proxy
   git config --global --unset https.proxy
 
   npm config rm proxy
   npm config rm https-proxy
-
-  apm config rm proxy
-  apm config rm https-proxy
 
   proxy_ssh_stop
   __proxy_state_set_cache state stop
@@ -118,14 +114,9 @@ function proxy_run(){
   git config --global https.proxy $https_proxy_value
 
   npm config set strict-ssl false
-  apm config set strict-ssl false
 
   npm config set proxy $http_proxy_value
   npm config set https-proxy $http_proxy_value
-
-  apm config set proxy $http_proxy_value
-  apm config set http-proxy $http_proxy_value
-  apm config set https-proxy $http_proxy_value
 
   proxy_assign $http_proxy_value $https_proxy_value $no_proxy_value
   proxy_ssh_start $2
@@ -384,8 +375,8 @@ function FindProxyForURL(url, host) {
 EOF
 
   echo "Updating pulse.pac"
-  sudo sed -i "s/proxyHost = \"[A-Za-z.]\+\"/proxyHost = \"$PROXY_HOST\"/g" $PULSE_PAC
-  sudo sed -i "s/$OLD_COMPANY_DOMAIN/$NEW_COMPANY_DOMAIN/g" $PULSE_PAC
+  sudo gsed -i "s/proxyHost = \"[A-Za-z.]\+\"/proxyHost = \"$PROXY_HOST\"/g" $PULSE_PAC
+  sudo gsed -i "s/$OLD_COMPANY_DOMAIN/$NEW_COMPANY_DOMAIN/g" $PULSE_PAC
   echo "----[NEW pulse.pac]----"
   cat $PULSE_PAC
 

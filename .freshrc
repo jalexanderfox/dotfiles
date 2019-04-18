@@ -55,13 +55,6 @@ fresh freshshell/fresh bin/fresh --bin
 # chmodr (recursively chmod a directory for web access)
 fresh bin/chmodr --bin=~/bin/chmodr
 
-# Atom
-# because we want a single source of atom packages
-# alias to this git repo
-# use package-sync to sync packages
-
-mkdir -p $HOME/.atom
-ln -sf  $HOME/.dotfiles/.atom/packages.cson $HOME/.atom/packages.cson
 
 # PROFILE | PRIVATE | EXTRA
 
@@ -83,7 +76,8 @@ fresh .bashrc --file
 fresh mathiasbynens/dotfiles/ .aliases
 
 # Builds jasoncodes/dotfiles/shell/aliases into ~/.fresh/build/shell.sh
-fresh jasoncodes/dotfiles shell/aliases
+# fresh jasoncodes/dotfiles shell/aliases
+fresh shell/aliases/\*
 
 # override with local changes
 fresh .aliases

@@ -122,9 +122,3 @@ export RUBYOPT="-r rubygems"
 
 # export NVM_DIR=~/.nvm
 # source $(brew --prefix nvm)/nvm.sh
-
-###############################################################################
-# APM
-###############################################################################
-
-# export ATOM_NODE_URL=http://gh-contractor-zcbenz.s3.amazonaws.com/atom-shell/dist
