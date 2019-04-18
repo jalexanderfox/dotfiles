@@ -38,14 +38,11 @@ brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch 
 
 # Apps
 apps=(
-  atom
   firefox
-  flash
-  google-chrome
-  intellij-idea
   iterm2
-  java
   optimal-layout
+  visual-studio-code
+  google-chrome
 )
 
 # Install apps to /Applications
@@ -57,6 +54,9 @@ brew cask install --appdir="/Applications" ${apps[@]}
 # Archive... for use if you want
 # Apps
 # apps=(
+#   flash
+#   java
+#   intellij-idea
 #   phantomjs
 #   alfred
 #   dropbox
@@ -81,8 +81,6 @@ brew cask install --appdir="/Applications" ${apps[@]}
 #   shiori
 #   sublime-text3
 #   virtualbox
-#   atom
-#   flux
 #   mailbox
 #   qlstephen
 #   sketch
@@ -107,7 +105,6 @@ brew cask install --appdir="/Applications" ${apps[@]}
 #   shiori
 #   sublime-text3
 #   virtualbox
-#   flux
 #   vlc
 #   cloudup
 #   nvalt
