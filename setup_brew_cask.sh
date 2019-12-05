@@ -29,8 +29,8 @@ fi
 ###############################################################################
 
 # After you have homebrew installed, you'll want to install Homebrew Cask for installing Native Apps:
-brew install caskroom/cask/brew-cask
-brew tap caskroom/versions
+brew install homebrew/cask-cask
+brew tap homebrew/cask-versions
 
 
 # Install quicklook plugins: https://github.com/sindresorhus/quick-look-plugins
